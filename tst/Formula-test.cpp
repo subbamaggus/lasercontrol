@@ -9,3 +9,7 @@ TEST(blaTest, test1) {
     EXPECT_EQ (Formula::bla (10), 30);
     EXPECT_EQ (Formula::bla (50), 150);
 }
+
+TEST(maggusTest, test2) {
+    EXPECT_EQ (Formula::maggus (1,1), 2);    
+}
