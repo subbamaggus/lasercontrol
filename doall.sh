@@ -6,9 +6,9 @@ fi
 
 cd build
 
-rm -rf *
+#rm -rf *
 
-cmake ..
+#cmake ..
 
 cmake --build .
 
