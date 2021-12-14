@@ -11,5 +11,6 @@ TEST(blaTest, test1) {
 }
 
 TEST(maggusTest, test2) {
+    EXPECT_EQ (Formula::maggus (0,0), 0);    
     EXPECT_EQ (Formula::maggus (1,1), 2);    
 }
