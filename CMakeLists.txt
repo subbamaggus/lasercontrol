@@ -7,5 +7,14 @@ endif()
    
 cmake_minimum_required(VERSION 2.8)
 project(app_project)
-add_executable(myapp src/main.c)
-install(TARGETS myapp DESTINATION bin)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+
+include_directories(src)
+
+add_subdirectory(src)
+add_subdirectory(tst)
+add_subdirectory(lib/googletest)
+
