@@ -6,12 +6,15 @@ fi
 
 cd build
 
-#rm -rf *
+if [ "${1}" == "all" ]; then
+  rm -rf *
 
-#cmake ..
+  cmake ..
+fi
 
 cmake --build .
 
 tst/Debug/app_project_tst.exe
+src/Debug/app_project_run.exe
 
 cd ${pwd}
