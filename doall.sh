@@ -4,7 +4,7 @@ if [ ! -e build ]; then
   mkdir build
 fi
 
-cd build
+cd ${pwd}/build
 
 if [ "${1}" == "all" ]; then
   rm -rf *
@@ -14,7 +14,10 @@ fi
 
 cmake --build .
 
-tst/Debug/app_project_tst.exe
-src/Debug/app_project_run.exe
+cd ${pwd}/build/tst/Debug/
+./app_project_tst.exe
+
+cd ${pwd}/build/src/Debug/
+./app_project_run.exe
 
 cd ${pwd}
