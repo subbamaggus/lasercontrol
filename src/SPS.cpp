@@ -1,9 +1,10 @@
 #include "SPS.h"
 #include "DataConnector.h"
 
-    
+#include "easylogging++.h"
+
 int SPS::registration() {
-    LOG(INFO) << "registration";
+//    LOG(INFO) << "registration";
     
     std::string value = ""; 
     
