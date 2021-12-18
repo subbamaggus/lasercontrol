@@ -1,5 +1,6 @@
 #include "Bluhmware.h"
 #include "easylogging++.h"
+#include "DataConnector.h"
 
 #include <chrono>
 #include <thread>
@@ -9,6 +10,7 @@ int Bluhmware::run() {
     
     while(true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        
     }
     
     return 0;
