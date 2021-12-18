@@ -3,7 +3,7 @@
 
     
 int SPS::registration() {
-    LOG(DEBUG) << "registration";
+////    LOG(INFO) << "registration";
     
     std::string value = ""; 
     
@@ -17,7 +17,7 @@ int SPS::registration() {
 
 
 std::string SPS::getOrder() {
-    LOG(DEBUG) << "getOrder";
+//    LOG(INFO) << "getOrder";
     std::string value = ""; 
     
     DataConnector::readValue("AuftragsNummer", value);
@@ -26,7 +26,7 @@ std::string SPS::getOrder() {
 }
 
 std::string SPS::getSerialNumber() {
-    LOG(DEBUG) << "getSerialNumber";
+//    LOG(INFO) << "getSerialNumber";
     std::string value = ""; 
     
     DataConnector::readValue("SerienNummer", value);
@@ -35,7 +35,7 @@ std::string SPS::getSerialNumber() {
 }
 
 std::string SPS::getWT() {
-    LOG(DEBUG) << "getWT";
+//    LOG(INFO) << "getWT";
     std::string value = ""; 
     
     DataConnector::readValue("WerkStuecktraeger", value);
@@ -44,7 +44,7 @@ std::string SPS::getWT() {
 }
 
 int SPS::passThrough() {
-    LOG(DEBUG) << "passThrough";
+//    LOG(INFO) << "passThrough";
     DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "1");
     
     // TODO reset after time?
@@ -52,14 +52,14 @@ int SPS::passThrough() {
 }
 
 int SPS::resetPassThrough() {
-    LOG(DEBUG) << "resetPassThrough";
+//    LOG(INFO) << "resetPassThrough";
     DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "0");
     
     return 0;
 }
 
 int SPS::acknowledgeHandshake() {
-    LOG(DEBUG) << "acknowledgeHandshake";
+//    LOG(INFO) << "acknowledgeHandshake";
     DataConnector::writeValue("AUSGANG_LASER1_KOMM_STATUS", "1");
     
     // TODO reset after time?
@@ -67,7 +67,7 @@ int SPS::acknowledgeHandshake() {
 }
 
 int SPS::resetAcknowledgeHandshake() {
-    LOG(DEBUG) << "resetAcknowledgeHandshake";
+//    LOG(INFO) << "resetAcknowledgeHandshake";
     DataConnector::writeValue("AUSGANG_LASER1_KOMM_STATUS", "0");
     
     return 0;
