@@ -3,10 +3,12 @@
 #include <iostream>
 #include <fstream>
 
+#include "easylogging++.h"
+
 std::string folder = "data/";
 
 int DataConnector::readValue(std::string key, std::string & value) {
-//    LOG(INFO) << "readValue: " << key;
+    LOG(INFO) << "readValue: " << key;
     
     std::ifstream infile(folder + key);
     std::getline(infile, value);
