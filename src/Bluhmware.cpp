@@ -28,7 +28,6 @@ int Bluhmware::run() {
             //check data for SerienNummer
             
             if (false) { 
-                // passthrough
                 LOG(INFO) << "pass through";
                 
                 SPS::passThrough();
@@ -36,17 +35,23 @@ int Bluhmware::run() {
             }
             
             if (false) {
-                // layout not available
+                LOG(INFO) << "layout not available";
+
                 continue;
             }
             
             int posistionReached = 0;
-            int timeout = 5; // TODO timeout and sleep time, keep them together
-            while (0 == posistionReached && timeout > 0) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));                
+            int retry = 10;
+            while (0 == posistionReached) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));                
 
                 posistionReached = SPS::positionReached();
-                timeout --;
+                retry --;
+                
+                if(retry <= 0) {
+                    LOG(INFO) << "retries exceeded";
+                    break;
+                }
             }
             
             // tell laser to load layout
