@@ -3,8 +3,10 @@
 #include <iostream>
 #include <fstream>
 
+std::string folder = "data/";
+
 int DataConnector::readValue(std::string key, std::string & value) {
-    std::ifstream infile(key);
+    std::ifstream infile(folder + key);
     std::getline(infile, value);
 
     return 0;
@@ -12,7 +14,7 @@ int DataConnector::readValue(std::string key, std::string & value) {
 
 int DataConnector::writeValue(std::string key, std::string value) {
     std::ofstream myfile;
-    myfile.open (key);
+    myfile.open(folder + key);
     myfile << value;
     myfile.close();
     return 0;
