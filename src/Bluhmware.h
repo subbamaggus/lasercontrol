@@ -5,6 +5,7 @@ class Bluhmware {
 public:
     int run();
     int setLaser(int parameter_laser);
+    int getLaser();
     Bluhmware();
 private:
     int laser = -1;

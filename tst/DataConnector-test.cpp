@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "DataConnector.h"
 
-TEST(readTest, test1) {
+TEST(DataConnectorTest, test1) {
     //arrange
     //act
     //assert

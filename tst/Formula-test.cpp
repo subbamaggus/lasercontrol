@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Formula.h"
 
-TEST(blaTest, test1) {
+TEST(FormulaTest, test1) {
     //arrange
     //act
     //assert
@@ -10,7 +10,7 @@ TEST(blaTest, test1) {
     EXPECT_EQ (Formula::bla (50), 150);
 }
 
-TEST(maggus123Test, test2) {
+TEST(FormulaTest, test2) {
     EXPECT_EQ (Formula::maggus (0,0), 0);    
     EXPECT_EQ (Formula::maggus (1,1), 2);    
 }

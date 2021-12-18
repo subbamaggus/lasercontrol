@@ -7,13 +7,19 @@ int Bluhmware::run() {
 }
 
 int Bluhmware::setLaser(int parameter_laser) {
-    LOG(INFO) << "laser: " << parameter_laser;
+    LOG(INFO) << "setLaser: " << parameter_laser;
     
     laser = parameter_laser;
     
     return 0;
 }
 
+int Bluhmware::getLaser() {
+    LOG(INFO) << "getLaser" << laser;
+    
+    return laser;
+}
+
 Bluhmware::Bluhmware() {
-    LOG(INFO) << "init Bluhmware";
+    LOG(INFO) << "Bluhmware";
 }
