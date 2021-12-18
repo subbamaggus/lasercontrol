@@ -1,20 +1,18 @@
 #include "Bluhmware.h"
 #include "easylogging++.h"
-#include "DataConnector.h"
+#include "SPS.h"
 
 #include <chrono>
 #include <thread>
 
 int Bluhmware::run() {
     LOG(INFO) << "run";
-    std::string key = "datafile.txt"; 
-    std::string value = "pass by value"; 
     
     while(true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         
-        DataConnector::readValue (key, value);
-        if(value == "1") {
+        int avail = SPS::registration();
+        if(1 == avail) {
             LOG(INFO) << "slope detected";
         }
     }
