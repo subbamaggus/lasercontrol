@@ -5,7 +5,7 @@ TEST(DataConnectorTest, test1) {
     //arrange
     //act
     //assert
-    std::string key = "datafile.txt"; 
+    std::string key = "datafiletest.txt"; 
     std::string value = "pass by value"; 
     
     EXPECT_EQ (DataConnector::readValue (key, value),  0);
