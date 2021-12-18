@@ -4,11 +4,10 @@
 class Bluhmware {
 public:
     int run();
-    int setLaserPosition(int parameter_laser, int parameter_position);
+    int setLaser(int parameter_laser);
     Bluhmware();
 private:
     int laser = -1;
-    int position = -1;
 };
 
     

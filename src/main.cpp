@@ -1,7 +1,9 @@
 #include <iostream>
-#include "Formula.h"
 #include "SimpleIni.h"
 #include "easylogging++.h"
+
+#include "Formula.h"
+#include "Bluhmware.h"
 
 INITIALIZE_EASYLOGGINGPP
 
@@ -22,6 +24,11 @@ int main() {
     std::cout << "ini2: " << pv << std::endl;
 
     LOG(INFO) << "My first info log using default logger";
+
+
+    Bluhmware bw;
+    bw.setLaser(1);
+    bw.run();
     
     return 0;
 }

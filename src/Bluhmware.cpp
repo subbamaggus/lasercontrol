@@ -1,16 +1,19 @@
 #include "Bluhmware.h"
+#include "easylogging++.h"
 
 int Bluhmware::run() {
+    LOG(INFO) << "run";
     return 0;
 }
 
-int Bluhmware::setLaserPosition(int parameter_laser, int parameter_position) {
+int Bluhmware::setLaser(int parameter_laser) {
+    LOG(INFO) << "laser: " << parameter_laser;
+    
     laser = parameter_laser;
-    position = parameter_position;
     
     return 0;
 }
 
 Bluhmware::Bluhmware() {
-    
+    LOG(INFO) << "init Bluhmware";
 }
