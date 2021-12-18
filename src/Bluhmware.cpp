@@ -48,6 +48,26 @@ int Bluhmware::run() {
                 posistionReached = SPS::positionReached();
                 timeout --;
             }
+            
+            // tell laser to load layout
+//            while(layer)
+//                print layer X
+//                    writePLC AUSGANG_LASER1_LAYER_BIT00
+//                    writePLC AUSGANG_LASER1_LAYER_BIT01
+//                    writePLC AUSGANG_LASER1_LAYER_BIT02
+//                    writePLC AUSGANG_LASER1_LAYER_BIT03
+//                    writePLC AUSGANG_LASER1_LAYER_BIT04
+//            writePLC AUSGANG_LASER1_POS1_FERTIG
+//            
+//        if (readPLC EINGANG_SCANNER1_POS1_ERREICHT)
+//            while(readPLC EINGANG_SCANNER1_WIEDERHOLEN)
+//                scan pos1
+//
+//                writePLC Scan1Pos1Ergebnis
+//                writePLC AUSGANG_SCANNER1_POS1_FERTIG
+//
+//                if (readPLC EINGANG_SCANNER1_ABBRUCH)
+//                    break            
         }
     }
     

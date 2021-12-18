@@ -7,6 +7,8 @@ class SPS {
     
 public:
     static int registration();
+
+    static int positionReached();
     
     static std::string getOrder();
     static std::string getSerialNumber();
@@ -21,7 +23,6 @@ public:
     static int layoutAvailable();
     static int resetLayoutAvailable();
     
-    static int positionReached();
     
 private:
     std::string order = "orderno"; 

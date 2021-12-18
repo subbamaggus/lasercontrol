@@ -3,6 +3,9 @@
 
 #include "easylogging++.h"
 
+// ######################################################
+// read values
+
 int SPS::registration() {
 //    LOG(INFO) << "registration";
     
@@ -54,6 +57,8 @@ std::string SPS::getWT() {
     return value;
 }
 
+// ######################################################
+// write values
 
 int SPS::passThrough() {
 //    LOG(INFO) << "passThrough";
