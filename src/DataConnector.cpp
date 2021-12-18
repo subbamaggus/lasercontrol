@@ -17,5 +17,6 @@ int DataConnector::writeValue(std::string key, std::string value) {
     myfile.open(folder + key);
     myfile << value;
     myfile.close();
+    
     return 0;
 }

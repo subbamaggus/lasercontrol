@@ -12,7 +12,7 @@ if [ "${1}" == "all" ]; then
   cmake ..
   
   cp ../example.ini ./
-  cp ../*.txt ./
+  cp ../data ./
 fi
 
 cmake --build .

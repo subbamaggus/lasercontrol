@@ -12,3 +12,29 @@ int SPS::registration() {
     
     return 0;
 }
+
+
+std::string SPS::getOrder() {
+    std::string value = ""; 
+    
+    DataConnector::readValue("AuftragsNummer", value);
+    
+    return value;
+}
+
+std::string SPS::getSerialNumber() {
+    std::string value = ""; 
+    
+    DataConnector::readValue("SerienNummer", value);
+    
+    return value;
+}
+
+std::string SPS::getWT() {
+    std::string value = ""; 
+    
+    DataConnector::readValue("WerkStuecktraeger", value);
+    
+    return value;
+}
+

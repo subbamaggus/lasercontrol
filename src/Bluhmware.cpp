@@ -7,6 +7,10 @@
 
 int Bluhmware::run() {
     LOG(INFO) << "run";
+    std::string myOrder = "myOrder"; 
+    std::string mySNR = "mySNR"; 
+    std::string myWT = "myWT"; 
+    
     
     while(true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -14,6 +18,12 @@ int Bluhmware::run() {
         int avail = SPS::registration();
         if(1 == avail) {
             LOG(INFO) << "slope detected";
+            
+            myOrder = SPS::getOrder();
+            mySNR = SPS::getSerialNumber();
+            myWT = SPS::getWT();
+            
+            LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
         }
     }
     
