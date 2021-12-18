@@ -10,6 +10,8 @@ if [ "${1}" == "all" ]; then
   rm -rf *
 
   cmake ..
+  
+  cp ../example.ini ./
 fi
 
 cmake --build .
