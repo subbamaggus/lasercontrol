@@ -1,9 +1,7 @@
 #include "Bluhmware.h"
-#include "easylogging++.h"
 #include "SPS.h"
 
-#include <chrono>
-#include <thread>
+#include "easylogging++.h"
 
 int Bluhmware::run() {
     LOG(INFO) << "run";

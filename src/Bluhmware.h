@@ -1,6 +1,9 @@
 #ifndef EXAMPLEPROJECT_BLUHMWARE_H
 #define EXAMPLEPROJECT_BLUHMWARE_H
 
+#include <chrono>
+#include <thread>
+
 class Bluhmware {
 public:
     int run();

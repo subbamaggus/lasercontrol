@@ -3,7 +3,7 @@
 
     
 int SPS::registration() {
-////    LOG(INFO) << "registration";
+//    LOG(INFO) << "registration";
     
     std::string value = ""; 
     
