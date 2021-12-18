@@ -1,8 +1,16 @@
 #include "Bluhmware.h"
 #include "easylogging++.h"
 
+#include <chrono>
+#include <thread>
+
 int Bluhmware::run() {
     LOG(INFO) << "run";
+    
+    while(true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+    
     return 0;
 }
 
