@@ -7,11 +7,17 @@ class SPS {
     
 public:
     static int registration();
+    
     static std::string getOrder();
     static std::string getSerialNumber();
     static std::string getWT();
+    
     static int passThrough();
     static int resetPassThrough();
+    
+    static int acknowledgeHandshake();
+    static int resetAcknowledgeHandshake();
+    
 private:
     std::string order = "orderno"; 
     std::string serial = "serial"; 

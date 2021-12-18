@@ -19,6 +19,8 @@ int Bluhmware::run() {
         if(1 == avail) {
             LOG(INFO) << "slope detected";
             
+            SPS::acknowledgeHandshake();
+            
             myOrder = SPS::getOrder();
             mySNR = SPS::getSerialNumber();
             myWT = SPS::getWT();
