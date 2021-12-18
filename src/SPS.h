@@ -18,6 +18,11 @@ public:
     static int acknowledgeHandshake();
     static int resetAcknowledgeHandshake();
     
+    static int layoutAvailable();
+    static int resetLayoutAvailable();
+    
+    static int positionReached();
+    
 private:
     std::string order = "orderno"; 
     std::string serial = "serial"; 

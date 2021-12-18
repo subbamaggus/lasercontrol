@@ -16,6 +16,16 @@ int SPS::registration() {
     return 0;
 }
 
+int SPS::positionReached() {
+    std::string value = ""; 
+    
+    DataConnector::readValue("EINGANG_SCANNER1_POS1_ERREICHT", value);
+    
+    if("1" == value)
+        return 1;
+    
+    return 0;
+}
 
 std::string SPS::getOrder() {
 //    LOG(INFO) << "getOrder";
@@ -43,6 +53,7 @@ std::string SPS::getWT() {
     
     return value;
 }
+
 
 int SPS::passThrough() {
 //    LOG(INFO) << "passThrough";
@@ -73,3 +84,19 @@ int SPS::resetAcknowledgeHandshake() {
     
     return 0;
 }
+
+int SPS::layoutAvailable() {
+//    LOG(INFO) << "layoutAvailable";
+    DataConnector::writeValue("AUSGANG_LASER1_LAYOUT_BEREIT", "1");
+    
+    // TODO reset after time?
+    return 0;
+}
+
+int SPS::resetLayoutAvailable() {
+//    LOG(INFO) << "resetLayoutAvailable";
+    DataConnector::writeValue("AUSGANG_LASER1_LAYOUT_BEREIT", "0");
+    
+    return 0;
+}
+

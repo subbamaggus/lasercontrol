@@ -27,11 +27,26 @@ int Bluhmware::run() {
             
             //check data for SerienNummer
             
-            if (false) { // durchlauf
+            if (false) { 
+                // passthrough
                 LOG(INFO) << "pass through";
                 
                 SPS::passThrough();
                 continue;
+            }
+            
+            if (false) {
+                // layout not available
+                continue;
+            }
+            
+            int posistionReached = 0;
+            int timeout = 5; // TODO timeout and sleep time, keep them together
+            while (0 == posistionReached && timeout > 0) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(1000));                
+
+                posistionReached = SPS::positionReached();
+                timeout --;
             }
         }
     }
