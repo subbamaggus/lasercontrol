@@ -38,3 +38,14 @@ std::string SPS::getWT() {
     return value;
 }
 
+int SPS::passThrough() {
+    DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "1");
+    
+    return 0;
+}
+
+int SPS::resetPassThrough() {
+    DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "0");
+    
+    return 0;
+}

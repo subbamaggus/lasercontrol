@@ -10,6 +10,8 @@ public:
     static std::string getOrder();
     static std::string getSerialNumber();
     static std::string getWT();
+    static int passThrough();
+    static int resetPassThrough();
 private:
     std::string order = "orderno"; 
     std::string serial = "serial"; 

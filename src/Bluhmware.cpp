@@ -24,6 +24,15 @@ int Bluhmware::run() {
             myWT = SPS::getWT();
             
             LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
+            
+            //check data for SerienNummer
+            
+            if (false) { // durchlauf
+                LOG(INFO) << "pass through";
+                
+                SPS::passThrough();
+                continue;
+            }
         }
     }
     
