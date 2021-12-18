@@ -16,10 +16,8 @@ fi
 
 cmake --build .
 
-cd ${pwd}/build/tst/Debug/
-./app_project_tst.exe
+./tst/Debug/app_project_tst.exe
 
-cd ${pwd}/build/src/Debug/
-./app_project_run.exe
+./src/Debug/app_project_run.exe
 
 cd ${pwd}
