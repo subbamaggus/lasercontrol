@@ -7,6 +7,7 @@
 class DataConnector {
 public:
     static int readValue(std::string key, std::string & value);
+    static int writeValue(std::string key, std::string value);
 };
 
     
