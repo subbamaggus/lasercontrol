@@ -1,6 +1,9 @@
 #include "Formula.h"
 
+#include "easylogging++.h"
+
 int Formula::bla(int arg1) {
+    LOG(INFO) << "test logging";
     return arg1 * 3;
 }
 

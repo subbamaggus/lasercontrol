@@ -7,7 +7,7 @@
 // read values
 
 int SPS::registration() {
-//    LOG(INFO) << "registration";
+    LOG(INFO) << "registration";
 
     std::string value = "";
 
@@ -60,7 +60,7 @@ int SPS::rescan() {
 }
 
 std::string SPS::getOrder() {
-//    LOG(INFO) << "getOrder";
+    LOG(INFO) << "getOrder";
     std::string value = "";
 
     DataConnector::readValue("AuftragsNummer", value);
@@ -69,7 +69,7 @@ std::string SPS::getOrder() {
 }
 
 std::string SPS::getSerialNumber() {
-//    LOG(INFO) << "getSerialNumber";
+    LOG(INFO) << "getSerialNumber";
     std::string value = "";
 
     DataConnector::readValue("SerienNummer", value);
@@ -78,7 +78,7 @@ std::string SPS::getSerialNumber() {
 }
 
 std::string SPS::getWT() {
-//    LOG(INFO) << "getWT";
+    LOG(INFO) << "getWT";
     std::string value = "";
 
     DataConnector::readValue("WerkStuecktraeger", value);
@@ -90,7 +90,7 @@ std::string SPS::getWT() {
 // write values
 
 int SPS::passThrough() {
-//    LOG(INFO) << "passThrough";
+    LOG(INFO) << "passThrough";
     DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "1");
 
     // TODO reset after time?
@@ -98,14 +98,14 @@ int SPS::passThrough() {
 }
 
 int SPS::resetPassThrough() {
-//    LOG(INFO) << "resetPassThrough";
+    LOG(INFO) << "resetPassThrough";
     DataConnector::writeValue("AUSGANG_LASER1_DURCHLAUF", "0");
 
     return 0;
 }
 
 int SPS::acknowledgeHandshake() {
-//    LOG(INFO) << "acknowledgeHandshake";
+    LOG(INFO) << "acknowledgeHandshake";
     DataConnector::writeValue("AUSGANG_LASER1_KOMM_STATUS", "1");
 
     // TODO reset after time?
@@ -113,14 +113,14 @@ int SPS::acknowledgeHandshake() {
 }
 
 int SPS::resetAcknowledgeHandshake() {
-//    LOG(INFO) << "resetAcknowledgeHandshake";
+    LOG(INFO) << "resetAcknowledgeHandshake";
     DataConnector::writeValue("AUSGANG_LASER1_KOMM_STATUS", "0");
 
     return 0;
 }
 
 int SPS::layoutAvailable() {
-//    LOG(INFO) << "layoutAvailable";
+    LOG(INFO) << "layoutAvailable";
     DataConnector::writeValue("AUSGANG_LASER1_LAYOUT_BEREIT", "1");
 
     // TODO reset after time?
@@ -128,21 +128,22 @@ int SPS::layoutAvailable() {
 }
 
 int SPS::resetLayoutAvailable() {
-//    LOG(INFO) << "resetLayoutAvailable";
+    LOG(INFO) << "resetLayoutAvailable";
     DataConnector::writeValue("AUSGANG_LASER1_LAYOUT_BEREIT", "0");
 
     return 0;
 }
 
 int SPS::setScanResult(int scanResult) {
-//    LOG(INFO) << "setScanResult";
+    LOG(INFO) << "setScanResult";
     DataConnector::writeValue("Scan1Pos1Ergebnis", "" + scanResult);
 
     return 0;
 }
 
 int SPS::setLayer(int layer) {
-//    LOG(INFO) << "setLayer";
+    LOG(INFO) << "setLayer";
+
     DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT00", "0");
     DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT01", "0");
     DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT02", "0");
