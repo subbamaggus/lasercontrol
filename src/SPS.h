@@ -14,6 +14,8 @@ public:
     static int scanDone();
     static int rescan();
     
+    static int setLayer(int layer);
+    
     static std::string getOrder();
     static std::string getSerialNumber();
     static std::string getWT();

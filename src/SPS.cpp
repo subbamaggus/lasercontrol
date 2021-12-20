@@ -141,4 +141,15 @@ int SPS::setScanResult(int scanResult) {
     return 0;
 }
 
+int SPS::setLayer(int layer) {
+//    LOG(INFO) << "setLayer";
+    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT00", "0");
+    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT01", "0");
+    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT02", "0");
+    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT03", "0");
+    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT04", "0");
+    
+    return 0;
+}
+
 

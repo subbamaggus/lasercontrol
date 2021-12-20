@@ -1,6 +1,7 @@
 #include "Bluhmware.h"
 #include "SPS.h"
 #include "Scanner.h"
+#include "Laser.h"
 
 #include "easylogging++.h"
 
@@ -58,16 +59,12 @@ int Bluhmware::run() {
                 }
             }
             
-            // tell laser to load layout
-//            while(layer)
-//                print layer X
-//                    writePLC AUSGANG_LASER1_LAYER_BIT00
-//                    writePLC AUSGANG_LASER1_LAYER_BIT01
-//                    writePLC AUSGANG_LASER1_LAYER_BIT02
-//                    writePLC AUSGANG_LASER1_LAYER_BIT03
-//                    writePLC AUSGANG_LASER1_LAYER_BIT04
-//            writePLC AUSGANG_LASER1_POS1_FERTIG
-//        
+            for (int layer = 1; layer <= 16; layer++) {
+                LOG(INFO) << "marking layer " << layer;
+                SPS::setLayer(layer);
+                Laser::mark();
+            }
+            
             SPS::laserDone();
             
             int scanResult = -1;
