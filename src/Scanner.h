@@ -6,5 +6,5 @@ public:
     static int scan();
 };
 
-    
+
 #endif //EXAMPLEPROJECT_SCANNER_H

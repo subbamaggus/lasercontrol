@@ -11,5 +11,5 @@ private:
     int laser = -1;
 };
 
-    
+
 #endif //EXAMPLEPROJECT_BLUHMWARE_H

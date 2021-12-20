@@ -9,10 +9,10 @@ INITIALIZE_EASYLOGGINGPP
 
 int main() {
     std::cout << "Bla: " << Formula::bla(2) << std::endl;
-    
+
     CSimpleIniA ini;
 	ini.SetUnicode();
-    
+
     SI_Error rc = ini.LoadFile("example.ini");
 	if (rc < 0) { /* handle error */ };
 
@@ -29,6 +29,6 @@ int main() {
     Bluhmware bw;
     bw.setLaser(1);
     bw.run();
-    
+
     return 0;
 }

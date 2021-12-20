@@ -6,5 +6,5 @@ public:
     static int mark();
 };
 
-    
+
 #endif //EXAMPLEPROJECT_LASER_H

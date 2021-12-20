@@ -2,14 +2,14 @@
 
 #include "easylogging++.h"
 
-#include <string> // for string class 
+#include <string> // for string class
 #include <fstream>
 
 std::string folder = "data/";
 
 int DataConnector::readValue(std::string key, std::string & value) {
 //    LOG(INFO) << "readValue: " << key;
-    
+
     std::ifstream infile(folder + key);
     std::getline(infile, value);
 
@@ -25,6 +25,6 @@ int DataConnector::writeValue(std::string key, std::string value) {
     myfile.open(folder + key);
     myfile << value;
     myfile.close();
-    
+
     return 0;
 }
