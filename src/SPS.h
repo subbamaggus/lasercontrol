@@ -8,7 +8,8 @@ class SPS {
 public:
     static int registration();
 
-    static int positionReached();
+    static int positionLaserReached();
+    static int positionSannerReached();
     
     static std::string getOrder();
     static std::string getSerialNumber();

@@ -19,7 +19,18 @@ int SPS::registration() {
     return 0;
 }
 
-int SPS::positionReached() {
+int SPS::positionLaserReached() {
+    std::string value = ""; 
+    
+    DataConnector::readValue("EINGANG_LASER1_POS1_ERREICHT", value);
+    
+    if("1" == value)
+        return 1;
+    
+    return 0;
+}
+
+int SPS::positionSannerReached() {
     std::string value = ""; 
     
     DataConnector::readValue("EINGANG_SCANNER1_POS1_ERREICHT", value);

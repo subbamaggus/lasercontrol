@@ -1,5 +1,6 @@
 #include "Bluhmware.h"
 #include "SPS.h"
+#include "Scanner.h"
 
 #include "easylogging++.h"
 
@@ -48,7 +49,7 @@ int Bluhmware::run() {
             while (0 == posistionReached) {
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));                
 
-                posistionReached = SPS::positionReached();
+                posistionReached = SPS::positionLaserReached();
                 retry --;
                 
                 if(retry <= 0) {
@@ -76,6 +77,20 @@ int Bluhmware::run() {
 //
 //                if (readPLC EINGANG_SCANNER1_ABBRUCH)
 //                    break            
+            posistionReached = 0;
+            retry = 10;
+            while (0 == posistionReached) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));                
+
+                posistionReached = SPS::positionSannerReached();
+                retry --;
+                
+                if(retry <= 0) {
+                    LOG(INFO) << "retries exceeded";
+                    break;
+                }
+            }
+
         }
     }
     
