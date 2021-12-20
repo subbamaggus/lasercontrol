@@ -142,13 +142,16 @@ int SPS::setScanResult(int scanResult) {
 }
 
 int SPS::setLayer(int layer) {
-    LOG(INFO) << "setLayer";
+    LOG(INFO) << "setLayer: " << layer;
 
-    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT00", "0");
-    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT01", "0");
-    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT02", "0");
-    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT03", "0");
-    DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT04", "0");
+    std::string value = "0";
+    
+    for(int i = 0; i < 5; i++) {
+        value = "0";
+        if ((layer & (1 << i)) > 0)
+            value = "1";
+        DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT0" + i, "" + value);
+    }
 
     return 0;
 }
