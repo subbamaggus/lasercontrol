@@ -2,6 +2,7 @@
 #include "SPS.h"
 #include "Scanner.h"
 #include "Laser.h"
+#include "Data.h"
 
 #include "easylogging++.h"
 
@@ -30,7 +31,7 @@ int Bluhmware::run() {
             
             LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
             
-            //check data for SerienNummer
+            Data::method(mySNR);
             
             if (false) { 
                 LOG(INFO) << "pass through";
