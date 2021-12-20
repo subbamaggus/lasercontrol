@@ -1,5 +1,5 @@
 #include "Scanner.h"
 
-int Scanner::scan(int param) {
+int Scanner::scan() {
     return 0;
 }

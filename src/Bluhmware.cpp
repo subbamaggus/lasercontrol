@@ -67,28 +67,39 @@ int Bluhmware::run() {
 //                    writePLC AUSGANG_LASER1_LAYER_BIT03
 //                    writePLC AUSGANG_LASER1_LAYER_BIT04
 //            writePLC AUSGANG_LASER1_POS1_FERTIG
-//            
-//        if (readPLC EINGANG_SCANNER1_POS1_ERREICHT)
-//            while(readPLC EINGANG_SCANNER1_WIEDERHOLEN)
-//                scan pos1
-//
-//                writePLC Scan1Pos1Ergebnis
-//                writePLC AUSGANG_SCANNER1_POS1_FERTIG
-//
-//                if (readPLC EINGANG_SCANNER1_ABBRUCH)
-//                    break            
-            posistionReached = 0;
-            retry = 10;
-            while (0 == posistionReached) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));                
-
-                posistionReached = SPS::positionSannerReached();
-                retry --;
+//        
+            SPS::laserDone();
+            
+            int scanResult = -1;
+            
+            while (scanResult < 0) {
+                posistionReached = 0;
+                retry = 10;
+                while (0 == posistionReached) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));                
+    
+                    posistionReached = SPS::positionSannerReached();
+                    retry --;
+                    
+                    if(retry <= 0) {
+                        LOG(INFO) << "retries exceeded";
+                        break;
+                    }
+                }
                 
-                if(retry <= 0) {
-                    LOG(INFO) << "retries exceeded";
+                scanResult = Scanner::scan();
+                
+                SPS::setScanResult(scanResult);
+
+                SPS::scanDone();
+                
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                
+                if(!SPS::rescan()) {
+                    LOG(INFO) << "do not rescan";
                     break;
                 }
+                
             }
 
         }

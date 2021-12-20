@@ -3,7 +3,7 @@
 
 class Scanner {
 public:
-    static int scan(int param);
+    static int scan();
 };
 
     

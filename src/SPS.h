@@ -9,7 +9,10 @@ public:
     static int registration();
 
     static int positionLaserReached();
+    static int laserDone();
     static int positionSannerReached();
+    static int scanDone();
+    static int rescan();
     
     static std::string getOrder();
     static std::string getSerialNumber();
@@ -24,7 +27,7 @@ public:
     static int layoutAvailable();
     static int resetLayoutAvailable();
     
-    
+    static int setScanResult(int scanResult);
 private:
     std::string order = "orderno"; 
     std::string serial = "serial"; 
