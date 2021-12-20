@@ -2,6 +2,9 @@
 
 #include "easylogging++.h"
 
+#include <string> // for string class 
+#include <fstream>
+
 std::string folder = "data/";
 
 int DataConnector::readValue(std::string key, std::string & value) {

@@ -2,8 +2,6 @@
 #define EXAMPLEPROJECT_DATACONNECTOR_H
 
 #include <iostream> 
-#include <string> // for string class 
-#include <fstream>
 
 class DataConnector {
 public:
