@@ -145,7 +145,7 @@ int SPS::setLayer(int layer) {
     LOG(INFO) << "setLayer: " << layer;
 
     std::string value = "0";
-    std::string varname = "AUSGANG_LASER1_LAYER_BIT0";
+    std::string i_str = "";
     
     for(int i = 0; i < 5; i++) {
         int channel = 1 << i;
@@ -153,9 +153,9 @@ int SPS::setLayer(int layer) {
         if ((layer & (1 << i)) > 0)
             value = "1";
         
-        LOG(INFO) << varname << channel;
+        i_str = std::to_string(i);
         
-        DataConnector::writeValue("" + varname + channel, "" + value);
+        DataConnector::writeValue("AUSGANG_LASER1_LAYER_BIT0" + i_str, "" + value);
     }
 
     return 0;
