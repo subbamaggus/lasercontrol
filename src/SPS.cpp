@@ -20,6 +20,7 @@ int SPS::registration() {
 }
 
 int SPS::positionLaserReached() {
+    LOG(INFO) << "positionLaserReached";
     std::string value = "";
 
     DataConnector::readValue("EINGANG_LASER1_POS1_ERREICHT", value);
@@ -31,12 +32,14 @@ int SPS::positionLaserReached() {
 }
 
 int SPS::laserDone() {
+    LOG(INFO) << "laserDone";
     DataConnector::writeValue("AUSGANG_LASER1_POS1_FERTIG", "1");
 
     return 0;
 }
 
 int SPS::positionSannerReached() {
+    LOG(INFO) << "positionSannerReached";
     std::string value = "";
 
     DataConnector::readValue("EINGANG_SCANNER1_POS1_ERREICHT", value);
@@ -48,12 +51,14 @@ int SPS::positionSannerReached() {
 }
 
 int SPS::scanDone() {
+    LOG(INFO) << "scanDone";
     DataConnector::writeValue("AUSGANG_SCANNER1_POS1_FERTIG", "1");
 
     return 0;
 }
 
 int SPS::rescan() {
+    LOG(INFO) << "rescan";
     DataConnector::writeValue("EINGANG_SCANNER1_WIEDERHOLEN", "1");
 
     return 0;
