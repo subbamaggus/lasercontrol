@@ -3,9 +3,10 @@
 
 TEST(DataTest, test1) {
     //EXPECT_EQ (Data::method("12345"),  0);
-//    std::string snr = "";
-//    EXPECT_EQ (Data::number2formatted(1, snr),  0);
-//    EXPECT_EQ (snr,  "0001");
+
+    std::string snr = "";
+    EXPECT_EQ (Data::number2formatted(1, snr),  0);
+    EXPECT_EQ (snr,  "0001");
 
     int snr_i = 0;
     EXPECT_EQ (Data::formatted2number("0001", snr_i),  0);
