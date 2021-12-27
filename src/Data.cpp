@@ -17,20 +17,19 @@ int Data::method(std::string SerialNumber) {
     
     try
     {
-
         connection conn(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
         LOG(INFO) << "connected";
         
         result row = execute(
             conn,
-            NANODBC_TEXT("SELECT * FROM Zaehler"));
+            NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
         LOG(INFO) << "executed";
         
         for (int i = 1; row.next(); ++i)
         {
-            LOG(INFO) << i << " :" << convert(row.get<nanodbc::string>(0)) << " "
-                 << convert(row.get<nanodbc::string>(1)) << " "
-                 << convert(row.get<nanodbc::string>(2)) << " ";
+            LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
+            int value = stoi(convert(row.get<nanodbc::string>(1)));
+            LOG(INFO) << value;
         }
         return EXIT_SUCCESS;
     }
