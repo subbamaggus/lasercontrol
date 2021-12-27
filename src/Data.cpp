@@ -17,15 +17,8 @@ int Data::method(std::string SerialNumber) {
     
     try
     {
-        //std::list<datasource> list_datasources;
-        //list_datasources = nanodbc::list_datasources();
-        //std::list<datasource>::iterator it;
-        //
-        //for (it = list_datasources.begin(); it != list_datasources.end(); ++it){
-        //    std::cout << it->stringname;
-        //}
-        
-        connection conn(NANODBC_TEXT("localhost32-test"));
+
+        connection conn(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
         LOG(INFO) << "connected";
         
         result row = execute(
