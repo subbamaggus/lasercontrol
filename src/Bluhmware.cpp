@@ -45,11 +45,13 @@ int Bluhmware::markPositionReached(int pos) {
         LOG(INFO) << "marking layer " << layer;
         
         SPS::setLayer(layer);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         
         Laser::mark();
     }
     
     SPS::laserDone();
+    SPS::setLayer(0);
     
     return 0;    
 }
