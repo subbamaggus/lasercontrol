@@ -6,6 +6,8 @@
 class Data {
 public:
     static int method(std::string SerialNumber);
+    static int number2formatted(int Integer, std::string & value);
+    static int formatted2number(std::string value, int & Integer);
 };
 
 

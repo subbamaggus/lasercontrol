@@ -40,3 +40,20 @@ int Data::method(std::string SerialNumber) {
     //return EXIT_FAILURE;
     return 0;
 }
+
+int Data::number2formatted(int Integer, std::string & value) {
+    LOG(INFO) << "number2formatted: " << Integer;
+    
+    return 0;
+}
+
+int Data::formatted2number(std::string value, int & Integer) {
+    LOG(INFO) << "formatted2number: " << value;
+
+    char* char_arr;
+    char_arr = &value[0];
+    
+    Integer = std::strtol(char_arr, NULL, 36);
+    
+    return 0;
+}
