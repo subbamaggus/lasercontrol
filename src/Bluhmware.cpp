@@ -9,28 +9,74 @@
 #include <chrono>
 #include <thread>
 
+int Bluhmware::registerWT() {
+    int ret = -1;
+    LOG(INFO) << "registerWT()";
+
+    SPS::acknowledgeHandshake();
+
+    myOrder = SPS::getOrder();
+    mySNR = SPS::getSerialNumber();
+    myWT = SPS::getWT();
+
+    LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
+    
+    Data::method(mySNR);
+
+    bool layout_VN1_avail = true;
+    bool layout_VN2_avail = true;
+    
+    if (layout_VN1_avail) {
+        LOG(INFO) << "layout vn1 available";
+
+        SPS::layoutAvailable();
+        ret = 0;
+    }
+
+    SPS::resetAcknowledgeHandshake();
+    SPS::resetLayoutAvailable();
+    
+    return ret;
+}
+
+int Bluhmware::markPositionReached(int pos) {
+    
+    for (int layer = 1; layer <= 16; layer++) {
+        LOG(INFO) << "marking layer " << layer;
+        
+        SPS::setLayer(layer);
+        
+        Laser::mark();
+    }
+    
+    SPS::laserDone();
+    
+    return 0;    
+}
+
+int Bluhmware::scanPositionReached(int pos) {
+    int scanResult = Scanner::scan();
+
+    SPS::setScanResult(scanResult);
+
+    SPS::scanDone();
+
+    return scanResult;
+}
+
 int Bluhmware::run() {
     LOG(INFO) << "run";
-    std::string myOrder = "myOrder";
-    std::string mySNR = "mySNR";
-    std::string myWT = "myWT";
-
+    int last_avail = 0;
+    
     while(true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
         int avail = SPS::registration();
-        if(1 == avail) {
+        LOG(INFO) << "return value " << avail;
+        if(1 == avail && 0 == last_avail) {
             LOG(INFO) << "slope detected";
-
-            SPS::acknowledgeHandshake();
-
-            myOrder = SPS::getOrder();
-            mySNR = SPS::getSerialNumber();
-            myWT = SPS::getWT();
-
-            LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
-
-            Data::method(mySNR);
+            
+            this->registerWT();
 
             if (false) {
                 LOG(INFO) << "pass through";
@@ -39,11 +85,6 @@ int Bluhmware::run() {
                 continue;
             }
 
-            if (false) {
-                LOG(INFO) << "layout not available";
-
-                continue;
-            }
 
             int posistionReached = 0;
             int retry = 10;
@@ -59,13 +100,7 @@ int Bluhmware::run() {
                 }
             }
 
-            for (int layer = 1; layer <= 16; layer++) {
-                LOG(INFO) << "marking layer " << layer;
-                SPS::setLayer(layer);
-                Laser::mark();
-            }
-
-            SPS::laserDone();
+            this->markPositionReached(1);
 
             int scanResult = -1;
 
@@ -83,12 +118,8 @@ int Bluhmware::run() {
                         break;
                     }
                 }
-
-                scanResult = Scanner::scan();
-
-                SPS::setScanResult(scanResult);
-
-                SPS::scanDone();
+                
+                this->scanPositionReached(1);
 
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
@@ -100,6 +131,8 @@ int Bluhmware::run() {
             }
 
         }
+        
+        last_avail = avail;
     }
 
     return 0;
