@@ -17,6 +17,14 @@ int Data::method(std::string SerialNumber) {
     
     try
     {
+        //std::list<datasource> list_datasources;
+        //list_datasources = nanodbc::list_datasources();
+        //std::list<datasource>::iterator it;
+        //
+        //for (it = list_datasources.begin(); it != list_datasources.end(); ++it){
+        //    std::cout << it->stringname;
+        //}
+        
         connection conn(NANODBC_TEXT("localhost32-test"));
         LOG(INFO) << "connected";
         
