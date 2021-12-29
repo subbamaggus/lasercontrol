@@ -3,21 +3,20 @@
 #include "easylogging++.h"
 
 #include "example_unicode_utils.h"
-#include <nanodbc/nanodbc.h>
 
 #include <iostream>
 #include <stdexcept>
 #include <string>
 
 bool Data::isConnected() {
-    return false;
+    return connected;
 }
 
 int Data::connect() {
     LOG(INFO) << "connect: ";
     try
     {
-        //conn = New connection(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
+        conn = new nanodbc::connection(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
         LOG(INFO) << "connected";
         
         connected = true;
@@ -34,20 +33,26 @@ int Data::connect() {
 int Data::method(std::string SerialNumber) {
     LOG(INFO) << "method: " << SerialNumber;
     
-        //result row = execute(
+    try
+    {
+        //nanodbc::result row = execute(
         //    conn,
         //    NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
         //LOG(INFO) << "executed";
-        
+        //
         //for (int i = 1; row.next(); ++i)
         //{
         //    LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
         //    int value = stoi(convert(row.get<nanodbc::string>(1)));
         //    LOG(INFO) << value;
         //}
-
-    
-    return 0;
+        return EXIT_SUCCESS;
+    }
+    catch (std::runtime_error const& e)
+    {
+        LOG(INFO) << "exception: " << e.what();
+    }
+    return EXIT_FAILURE;
 }
 
 char* myitoa(int value, char* result, int base) {

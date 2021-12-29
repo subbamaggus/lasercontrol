@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-//class connection;
+#include <nanodbc/nanodbc.h>
 
 class Data {
 private:
     bool connected = false;
-    //connection * conn;
+    nanodbc::connection * conn;
 public:
     static int method(std::string SerialNumber);
     static int number2formatted(int Integer, std::string & value);
