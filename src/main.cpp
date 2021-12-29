@@ -28,7 +28,7 @@ int main() {
 
     Bluhmware bw;
     bw.setLaser(1);
-    bw.run();
+    //bw.run();
 
     return 0;
 }

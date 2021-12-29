@@ -9,39 +9,53 @@
 #include <stdexcept>
 #include <string>
 
-using namespace std;
-using namespace nanodbc;
+//using namespace std;
+//using namespace nanodbc;
+
+bool Data::isConnected() {
+    return false;
+}
+
+int Data::connect() {
+    LOG(INFO) << "connect: ";
+    try
+    {
+        //conn = New connection(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
+        LOG(INFO) << "connected";
+        
+        connected = true;
+        
+        return EXIT_SUCCESS;
+    }
+    catch (std::runtime_error const& e)
+    {
+        LOG(INFO) << "exception: " << e.what();
+    }
+    return EXIT_FAILURE;
+}
 
 int Data::method(std::string SerialNumber) {
     LOG(INFO) << "method: " << SerialNumber;
     
-    try
-    {
-        connection conn(NANODBC_TEXT("Driver={MySQL ODBC 5.1 Driver};Server=localhost;Database=test;User=root;"));
-        LOG(INFO) << "connected";
+        //result row = execute(
+        //    conn,
+        //    NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
+        //LOG(INFO) << "executed";
         
-        result row = execute(
-            conn,
-            NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
-        LOG(INFO) << "executed";
-        
-        for (int i = 1; row.next(); ++i)
-        {
-            LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
-            int value = stoi(convert(row.get<nanodbc::string>(1)));
-            LOG(INFO) << value;
-        }
-        return EXIT_SUCCESS;
-    }
-    catch (runtime_error const& e)
-    {
-        LOG(INFO) << "exception: " << e.what();
-    }
-    //return EXIT_FAILURE;
+        //for (int i = 1; row.next(); ++i)
+        //{
+        //    LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
+        //    int value = stoi(convert(row.get<nanodbc::string>(1)));
+        //    LOG(INFO) << value;
+        //}
+
+    
     return 0;
 }
 
 char* myitoa(int value, char* result, int base) {
+    LOG(INFO) << "myitoa: " << value << ", " << base;
+    
 	// check that the base if valid
 	if (base < 2 || base > 36) { *result = '\0'; return result; }
 

@@ -23,5 +23,11 @@ TEST(DataTest, test1) {
 
     EXPECT_EQ (Data::formatted2number("000z", snr_i),  0);
     EXPECT_EQ (snr_i,  35);
-    
+}
+
+TEST(DBTest, test2) {
+    Data myData;
+    EXPECT_EQ (myData.isConnected(), false);
+    EXPECT_EQ (myData.connect(), 0);
+    EXPECT_EQ (myData.isConnected(), true);
 }
