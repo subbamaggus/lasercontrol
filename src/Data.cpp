@@ -9,9 +9,6 @@
 #include <stdexcept>
 #include <string>
 
-//using namespace std;
-//using namespace nanodbc;
-
 bool Data::isConnected() {
     return false;
 }
