@@ -14,7 +14,12 @@ set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
 
 include_directories(src)
 
+message(STATUS "building src dir")
 add_subdirectory(src)
+
+message(STATUS "building tst dir")
 add_subdirectory(tst)
+
+message(STATUS "building lib/googletest dir")
 add_subdirectory(lib/googletest)
 
