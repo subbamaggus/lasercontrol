@@ -20,3 +20,7 @@ add_library(nanodbc nanodbc/nanodbc.cpp nanodbc/nanodbc.h)
 set(ODBC_LIBRARIES odbc32.lib odbccp32.lib Ws2_32.lib)
 target_link_libraries(${BINARY}_run nanodbc ${ODBC_LIBRARIES})
 target_link_libraries(${BINARY}_lib nanodbc ${ODBC_LIBRARIES})
+
+add_library(open62541 open62541/open62541.c open62541/open62541.h)
+target_link_libraries(${BINARY}_run open62541)
+target_link_libraries(${BINARY}_lib open62541)
