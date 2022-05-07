@@ -4,10 +4,9 @@
 
 #include "easylogging++.h"
 
-#include <string> // for string class
+#include <string>
 #include <fstream>
 
-//std::string folder = "data/";
 bool useOPC = false;
 
 int DataConnector::readValue(std::string key, std::string & value) {
@@ -20,8 +19,9 @@ int DataConnector::readValue(std::string key, std::string & value) {
 
         return 0;
     }
+    
     DataFileConnector::readValue (key, value);
-
+    
     LOG(INFO) << "returning: " << value;
 
     return 0;
