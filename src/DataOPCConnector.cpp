@@ -5,7 +5,7 @@
 
 int DataOPCConnector::readValue(std::string key, std::string & value) {
     
-//    UA_Client *client = UA_Client_new();
+    UA_Client *client = UA_Client_new();
 
     return 0;
 }
