@@ -1,30 +1,16 @@
 #include "DataOPCConnector.h"
+#include "open62541/open62541.h"
 
-#include "easylogging++.h"
-
-#include <string> // for string class
-#include <fstream>
-
-//std::string folder = "data/";
+#include <string>
 
 int DataOPCConnector::readValue(std::string key, std::string & value) {
-    LOG(INFO) << "readValue: " << key;
-
-//    std::ifstream infile(folder + key);
-//    std::getline(infile, value);
-//
-//    LOG(INFO) << "returning: " << value;
+    
+//    UA_Client *client = UA_Client_new();
 
     return 0;
 }
 
 int DataOPCConnector::writeValue(std::string key, std::string value) {
-    LOG(INFO) << "writeValue: " << key << ", " << value;
-
-//    std::ofstream myfile;
-//    myfile.open(folder + key);
-//    myfile << value;
-//    myfile.close();
 
     return 0;
 }

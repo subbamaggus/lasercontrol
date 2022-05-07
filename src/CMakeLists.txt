@@ -24,3 +24,7 @@ target_link_libraries(${BINARY}_lib nanodbc ${ODBC_LIBRARIES})
 add_library(open62541 open62541/open62541.c open62541/open62541.h)
 target_link_libraries(${BINARY}_run open62541)
 target_link_libraries(${BINARY}_lib open62541)
+
+target_link_libraries(${BINARY}_run ws2_32 wsock32)
+target_link_libraries(${BINARY}_lib ws2_32 wsock32)
+
