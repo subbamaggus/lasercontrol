@@ -8,6 +8,9 @@ public:
     int readValue(std::string key, std::string & value);
     int writeValue(std::string key, std::string value);
     bool useOPC;
+    
+    DataConnector();
+    ~DataConnector();
 };
 
 

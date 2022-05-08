@@ -2,11 +2,17 @@
 #define EXAMPLEPROJECT_DATAOPCCONNECTOR_H
 
 #include <iostream>
+#include "open62541/open62541.h"
 
 class DataOPCConnector {
 public:
-    static int readValue(std::string key, std::string & value);
-    static int writeValue(std::string key, std::string value);
+    DataOPCConnector();
+    ~DataOPCConnector();
+    
+    int readValue(std::string key, std::string & value);
+    int writeValue(std::string key, std::string value);
+private:
+    UA_Client *client;
 };
 
 

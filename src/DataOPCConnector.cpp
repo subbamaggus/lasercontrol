@@ -1,20 +1,31 @@
 #include "DataOPCConnector.h"
-#include "open62541/open62541.h"
-
+#include "easylogging++.h"
 #include <string>
 
-int DataOPCConnector::readValue(std::string key, std::string & value) {
-    
+DataOPCConnector::DataOPCConnector() {
+    LOG(INFO) << "DataOPCConnector::DataOPCConnector()";
     UA_StatusCode retval;
-
-    UA_Client *client = UA_Client_new();
+    
+    client = UA_Client_new();
     UA_ClientConfig_setDefault(UA_Client_getConfig(client));
     
     retval = UA_Client_connect(client, "opc.tcp://JM-W10-KE-MKENB:4980/csv");
     if(retval != UA_STATUSCODE_GOOD) {
         UA_Client_delete(client);
-        return EXIT_FAILURE;
     }
+    
+    LOG(INFO) << "initialized";
+}
+
+DataOPCConnector::~DataOPCConnector() {
+    UA_Client_disconnect(client);
+    UA_Client_delete(client);
+}
+
+int DataOPCConnector::readValue(std::string key, std::string & value) {
+    LOG(INFO) << "DataOPCConnector::readValue: " << key;
+    
+    UA_StatusCode retval;
     
     UA_NodeId nodeId = UA_NODEID(&key[0]);
     
@@ -36,9 +47,6 @@ int DataOPCConnector::readValue(std::string key, std::string & value) {
     
     UA_Variant_delete(val);
 
-    UA_Client_disconnect(client);
-    UA_Client_delete(client);
-    
     return 0;
 }
 

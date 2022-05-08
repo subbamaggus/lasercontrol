@@ -7,11 +7,19 @@
 #include <string>
 #include <fstream>
 
+DataConnector::DataConnector() {
+    useOPC = true;
+}
+
+DataConnector::~DataConnector() {
+}
+
 int DataConnector::readValue(std::string key, std::string & value) {
     LOG(INFO) << "readValue: " << key;
 
     if(useOPC) {
-        DataOPCConnector::readValue (key, value);
+        DataOPCConnector myDataOPCConnector;
+        myDataOPCConnector.readValue (key, value);
         
         LOG(INFO) << "returning: " << value;
 
@@ -29,7 +37,8 @@ int DataConnector::writeValue(std::string key, std::string value) {
     LOG(INFO) << "writeValue: " << key << ", " << value;
 
     if(useOPC) {
-        DataOPCConnector::writeValue (key, value);
+        DataOPCConnector myDataOPCConnector;
+        myDataOPCConnector.writeValue (key, value);
 
         return 0;
     }
