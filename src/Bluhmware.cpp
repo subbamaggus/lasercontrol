@@ -70,10 +70,12 @@ int Bluhmware::run() {
     LOG(INFO) << "run";
     int last_avail = 0;
     
+    SPS mySPS;
+    
     while(true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-        int avail = SPS::registration();
+        int avail = mySPS.registration();
         LOG(INFO) << "return value " << avail;
         if(1 == avail && 0 == last_avail) {
             LOG(INFO) << "slope detected";

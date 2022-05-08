@@ -6,7 +6,7 @@
 class SPS {
 
 public:
-    static int registration();
+    int registration();
 
     static int positionLaserReached();
     static int laserDone();

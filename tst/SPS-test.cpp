@@ -2,5 +2,7 @@
 #include "SPS.h"
 
 TEST(SPSTest, test1) {
-    EXPECT_EQ (SPS::registration(),  0);
+    SPS mySPS;
+    
+    EXPECT_EQ (mySPS.registration(),  0);
 }
