@@ -8,6 +8,14 @@
 #include <stdexcept>
 #include <string>
 
+Data::Data() {
+    
+}
+
+Data::~Data() {
+    
+}
+
 bool Data::isConnected() {
     return connected;
 }

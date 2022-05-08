@@ -15,6 +15,9 @@ public:
     static int formatted2number(std::string value, int & Integer);
     int connect();
     bool isConnected();
+    
+    Data();
+    ~Data();
 };
 
 
