@@ -7,7 +7,7 @@
 #include <string>
 #include <fstream>
 
-bool useOPC = false;
+bool useOPC = true;
 
 int DataConnector::readValue(std::string key, std::string & value) {
     LOG(INFO) << "readValue: " << key;
