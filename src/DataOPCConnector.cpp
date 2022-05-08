@@ -10,15 +10,13 @@ int DataOPCConnector::readValue(std::string key, std::string & value) {
     UA_Client *client = UA_Client_new();
     UA_ClientConfig_setDefault(UA_Client_getConfig(client));
     
-    /* Connect to a server */
-    /* anonymous connect would be: retval = UA_Client_connect(client, "opc.tcp://localhost:4840"); */
     retval = UA_Client_connect(client, "opc.tcp://JM-W10-KE-MKENB:4980/csv");
     if(retval != UA_STATUSCODE_GOOD) {
         UA_Client_delete(client);
         return EXIT_FAILURE;
     }
     
-    UA_NodeId nodeId = UA_NODEID("ns=3;s=Local Items.pdv_tok_vorfertigung.pdv_to_vf_w2");
+    UA_NodeId nodeId = UA_NODEID(&key[0]);
     
     UA_String opc_value;
     UA_Variant *val = UA_Variant_new();
@@ -35,7 +33,6 @@ int DataOPCConnector::readValue(std::string key, std::string & value) {
             std::string str(convert);
             value = str;
     }
-    
     
     UA_Variant_delete(val);
 
