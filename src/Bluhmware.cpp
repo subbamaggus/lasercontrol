@@ -21,7 +21,8 @@ int Bluhmware::registerWT() {
 
     LOG(INFO) << "readData Order:" << myOrder << ", SNR:" << mySNR << ", WT:" << myWT;
     
-    Data::method(mySNR);
+    Data myData;
+    myData.method(mySNR);
 
     bool layout_VN1_avail = true;
     bool layout_VN2_avail = true;

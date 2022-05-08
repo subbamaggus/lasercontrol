@@ -9,7 +9,7 @@
 #include <string>
 
 Data::Data() {
-    
+    connected = false;
 }
 
 Data::~Data() {
@@ -43,17 +43,17 @@ int Data::method(std::string SerialNumber) {
     
     try
     {
-        //nanodbc::result row = execute(
-        //    conn,
-        //    NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
-        //LOG(INFO) << "executed";
-        //
-        //for (int i = 1; row.next(); ++i)
-        //{
-        //    LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
-        //    int value = stoi(convert(row.get<nanodbc::string>(1)));
-        //    LOG(INFO) << value;
-        //}
+        nanodbc::result row = execute(
+            *conn,
+            NANODBC_TEXT("SELECT * FROM Zaehler where Linie='Linie1'"));
+        LOG(INFO) << "executed";
+        
+        for (int i = 1; row.next(); ++i)
+        {
+            LOG(INFO) << i << ": " << convert(row.get<nanodbc::string>(1));
+            int value = stoi(convert(row.get<nanodbc::string>(1)));
+            LOG(INFO) << value;
+        }
         return EXIT_SUCCESS;
     }
     catch (std::runtime_error const& e)
