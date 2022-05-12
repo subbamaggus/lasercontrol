@@ -25,17 +25,12 @@ add_library(open62541 open62541/open62541.c open62541/open62541.h)
 
 
 add_executable(${BINARY}_run ${SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-target_link_libraries(${BINARY}_run nanodbc ${ODBC_LIBRARIES})
-target_link_libraries(${BINARY}_run open62541)
-target_link_libraries(${BINARY}_run ws2_32 wsock32)
-
 add_executable(${BINARY}_snr ${SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_snr.cpp)
-target_link_libraries(${BINARY}_snr nanodbc ${ODBC_LIBRARIES})
-target_link_libraries(${BINARY}_snr open62541)
-target_link_libraries(${BINARY}_snr ws2_32 wsock32)
-
 add_library(${BINARY}_lib  ${SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-target_link_libraries(${BINARY}_lib nanodbc ${ODBC_LIBRARIES})
-target_link_libraries(${BINARY}_lib open62541)
-target_link_libraries(${BINARY}_lib ws2_32 wsock32)
 
+FOREACH(MODUL "_run" "_snr" "_lib")
+  # later make them a dll
+  target_link_libraries(${BINARY}${MODUL} nanodbc ${ODBC_LIBRARIES})
+  target_link_libraries(${BINARY}${MODUL} open62541)
+  target_link_libraries(${BINARY}${MODUL} ws2_32 wsock32)
+ENDFOREACH()
